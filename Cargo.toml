@@ -1,0 +1,10 @@
+[package]
+name = "ngc-controller-rs"
+version = "0.1.0"
+authors = ["Mathieu Amiot <amiot.mathieu@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+embedded-hal = "0.2.2"
+bitfield = "0.13.1"
+bitflags = "1.0.4"
