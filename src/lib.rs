@@ -1,6 +1,5 @@
-use embedded_hal::blocking::delay::DelayUs;
-use embedded_hal::digital::OutputPin;
-use embedded_hal::prelude::*;
+use cortex_m::interrupt;
+use embedded_hal::{blocking::delay::DelayUs, digital::v2::OutputPin, prelude::*};
 
 mod raw_state;
 mod raw_status;
@@ -29,9 +28,16 @@ where
             state: GamecubeControllerState::default(),
         }
     }
+
+    fn send(&self, data: &[u8]) {
+        pin.set_high();
+    }
+
     pub fn init(&self) {
         let _cmd = [0x00];
+        interrupt::free(move |_| {
+            // TODO: write command to pin
 
-        // TODO: write command to pin
+        });
     }
 }
